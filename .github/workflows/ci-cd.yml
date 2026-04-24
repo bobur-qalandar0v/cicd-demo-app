@@ -126,7 +126,7 @@ jobs:
           tar -czf app-${{ github.sha }}.tar.gz src/ package.json
           echo 'Serverga yuklash simulyatsiyasi...'
           sleep 2
-          echo 'Health check o\'tkazilmoqda...'
+          echo "Health check o'tkazilmoqda..."
           sleep 1
           echo 'DEPLOYMENT MUVAFFAQIYATLI YAKUNLANDI!'
 
