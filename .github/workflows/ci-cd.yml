@@ -68,6 +68,16 @@ jobs:
           name: coverage-report-node${{ matrix.node-version }}
           path: coverage/
           retention-days: 7
+      - name: Maxfiy konfiguratsiyani tekshirish
+        run: |
+          if [ -z "$APP_SECRET_KEY" ]; then
+            echo 'XATO: APP_SECRET_KEY mavjud emas!'
+            exit 1
+          fi
+          echo 'Secret muvaffaqiyatli yuklandi (qiymat ko\'rsatilmaydi)'
+          echo "Secret uzunligi: ${#APP_SECRET_KEY}"
+        env:
+          APP_SECRET_KEY: ${{ secrets.APP_SECRET_KEY }}
 
   # =============================================
   # JOB 2: Security Scan
