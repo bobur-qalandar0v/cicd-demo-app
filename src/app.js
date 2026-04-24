@@ -37,6 +37,18 @@ app.post('/calculate/subtract', (req, res) => {
   res.json({ result: a - b, operation: 'subtract' });
 });
 
+// divide endpoint qo'shildi
+app.post('/calculate/divide', (req, res) => {
+  const { a, b } = req.body;
+  if (typeof a !== 'number' || typeof b !== 'number') {
+    return res.status(400).json({ error: 'a va b raqam bo\'lishi kerak' });
+  }
+  if (b === 0) {
+    return res.status(400).json({ error: 'Nolga bo\'lish mumkin emas!' });
+  }
+  res.json({ result: a / b, operation: 'divide' });
+});
+
 // Faqat test bo'lmagan muhitda serverni ishga tushirish
 if (process.env.NODE_ENV !== 'test') {
   const PORT = process.env.PORT || 3000;

@@ -80,3 +80,27 @@ describe('Calculate Subtract Endpoint', () => {
     expect(res.statusCode).toBe(400);
   });
 });
+
+describe('Calculate Divide Endpoint', () => {
+  test('10 ni 2 ga bo\'lishi kerak', async () => {
+    const res = await request(app)
+      .post('/calculate/divide')
+      .send({ a: 10, b: 2 });
+    expect(res.statusCode).toBe(200);
+    expect(res.body.result).toBe(5);
+  });
+
+  test('Nolga bo\'lish 400 qaytarishi kerak', async () => {
+    const res = await request(app)
+      .post('/calculate/divide')
+      .send({ a: 10, b: 0 });
+    expect(res.statusCode).toBe(400);
+  });
+
+  test('Noto\'g\'ri input 400 qaytarishi kerak', async () => {
+    const res = await request(app)
+      .post('/calculate/divide')
+      .send({ a: 'salom', b: 2 });
+    expect(res.statusCode).toBe(400);
+  });
+});
