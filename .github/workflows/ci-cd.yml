@@ -74,7 +74,7 @@ jobs:
             echo 'XATO: APP_SECRET_KEY mavjud emas!'
             exit 1
           fi
-          echo 'Secret muvaffaqiyatli yuklandi (qiymat ko\'rsatilmaydi)'
+          echo "Secret muvaffaqiyatli yuklandi (qiymat ko'rsatilmaydi)"
           echo "Secret uzunligi: ${#APP_SECRET_KEY}"
         env:
           APP_SECRET_KEY: ${{ secrets.APP_SECRET_KEY }}
