@@ -55,3 +55,28 @@ describe('Calculate Multiply Endpoint', () => {
     expect(res.body.result).toBe(0);
   });
 });
+
+describe('Calculate Subtract Endpoint', () => {
+  test('10 dan 3 ni ayirishi kerak', async () => {
+    const res = await request(app)
+      .post('/calculate/subtract')
+      .send({ a: 10, b: 3 });
+    expect(res.statusCode).toBe(200);
+    expect(res.body.result).toBe(7);
+  });
+
+  test('Manfiy natija chiqishi kerak', async () => {
+    const res = await request(app)
+      .post('/calculate/subtract')
+      .send({ a: 3, b: 10 });
+    expect(res.statusCode).toBe(200);
+    expect(res.body.result).toBe(-7);
+  });
+
+  test('Noto\'g\'ri input 400 qaytarishi kerak', async () => {
+    const res = await request(app)
+      .post('/calculate/subtract')
+      .send({ a: 'salom', b: 3 });
+    expect(res.statusCode).toBe(400);
+  });
+});

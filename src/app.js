@@ -29,6 +29,14 @@ app.post('/calculate/multiply', (req, res) => {
   res.json({ result: a * b, operation: 'multiply' });
 });
 
+app.post('/calculate/subtract', (req, res) => {
+  const { a, b } = req.body;
+  if (typeof a !== 'number' || typeof b !== 'number') {
+    return res.status(400).json({ error: 'a va b raqam bo\'lishi kerak' });
+  }
+  res.json({ result: a - b, operation: 'subtract' });
+});
+
 // Faqat test bo'lmagan muhitda serverni ishga tushirish
 if (process.env.NODE_ENV !== 'test') {
   const PORT = process.env.PORT || 3000;
