@@ -37,6 +37,7 @@ app.post('/calculate/subtract', (req, res) => {
   res.json({ result: a - b, operation: 'subtract' });
 });
 
+// divide endpoint qo'shildi
 app.post('/calculate/divide', (req, res) => {
   const { a, b } = req.body;
   if (typeof a !== 'number' || typeof b !== 'number') {
